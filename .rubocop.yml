@@ -1,0 +1,17 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+Style/Documentation:
+  Exclude:
+    - 'db/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
