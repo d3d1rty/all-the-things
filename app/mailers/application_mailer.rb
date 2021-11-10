@@ -3,6 +3,6 @@
 ##
 # Base class for mailers
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: "no-reply@#{ENV['APP_DOMAIN']}"
   layout 'mailer'
 end

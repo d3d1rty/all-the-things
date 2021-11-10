@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+.lg\:flex-30 {
+  @media (min-width: 1024px) {
+    flex: 30%;
+  }
+}
+
+.lg\:flex-70 {
+  @media (min-width: 1024px) {
+    flex: 70%;
+  }
+}
+
+.flex-100 {
+  flex: 100%;
+}
+
+.field_with_errors label, .field_with_errors input, .field_with_errors select {
+  color: rgba(239, 68, 68, 1);
+}
+
+small.field_with_errors {
+  color: rgba(239, 68, 68, 1);
+}
