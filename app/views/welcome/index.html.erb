@@ -1,0 +1,13 @@
+<%= render(HeroComponent.new) do |c| %>
+  <% c.headline 'All the Things Pawn Shop', options: { classes: 'mb-8' } %>
+  <% c.lede 'We have the things you want--all of them.', options: { classes: 'mb-4' } %>
+  <% if user_signed_in? %>
+    <%= render(ButtonToComponent.new(color: 'red', link: destroy_user_session_path, method: :delete, data_attrs: { turbo: false }, options: { variant: :outline })) do %>
+      Sign Out
+    <% end %>
+  <% else %>
+    <%= render(ButtonToComponent.new(color: 'blue', link: new_user_session_path, method: :get, data_attrs: { turbo: false })) do %>
+      Sign In
+    <% end %>
+  <% end %>
+<% end %>

@@ -38,6 +38,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
+gem 'view_component'
+
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
   gem 'debug', '>= 1.0.0', platforms: %i[mri mingw x64_mingw]
