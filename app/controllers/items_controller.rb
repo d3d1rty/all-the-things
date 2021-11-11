@@ -1,13 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[ edit update destroy ]
 
   # GET /items or /items.json
   def index
-    @items = Item.all
-  end
-
-  # GET /items/1 or /items/1.json
-  def show
+    @items = Item.all.order(updated_at: :desc)
   end
 
   # GET /items/new
@@ -25,7 +21,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
+        format.html { redirect_to items_path, notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +34,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
+        format.html { redirect_to items_path, notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,6 +60,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :sku, :price, :cost, :pawned, :released_at, :stocked_at, :sold_at, :description)
+      params.require(:item).permit(:name, :sku, :price, :cost, :pawned, :released_at, :stocked_at, :sold_at)
     end
 end
