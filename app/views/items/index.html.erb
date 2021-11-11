@@ -1,0 +1,33 @@
+<%= turbo_frame_tag :items do %>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg dark:text-white font-bold text-4xl">Inventory</h1>
+      <%= render(ButtonToComponent.new(color: 'blue', link: new_item_path, method: :get, data_attrs: { turbo: false })) do %>
+        New Item
+      <% end %>
+    </div>
+    <div class="w-full mb-8 shadow-lg font-mono">
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full">
+          <thead>
+            <tr class="text-md font-semibold tracking-wide text-center text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-600 border-gray-500">
+              <%= th_for_header('Name') %>
+              <%= th_for_header('SKU') %>
+              <%= th_for_header('Price') %>
+              <%= th_for_header('Cost') %>
+              <%= th_for_header('Loan') %>
+              <%= th_for_header('Released?') %>
+              <%= th_for_header('Days in Stock') %>
+              <%= th_for_header('Sold Date') %>
+              <%= th_for_header('') %>
+              <%= th_for_header('') %>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <%= render @items %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

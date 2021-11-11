@@ -1,0 +1,32 @@
+<%= form_with(model: item, data: { turbo: false }) do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :name, errors: item.errors)) do |c| %>
+    <%= c.label 'Product Name' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :sku, errors: item.errors)) do |c| %>
+    <%= c.label 'SKU' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :price, errors: item.errors)) do |c| %>
+    <%= c.label 'Price' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :cost, errors: item.errors)) do |c| %>
+    <%= c.label 'Cost' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :stocked_at, errors: item.errors)) do |c| %>
+    <%= c.label 'Stocked on' %>
+    <%= c.date html_options: {} %>
+  <% end %>
+
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
+  <% end %>
+<% end %>

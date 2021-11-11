@@ -13,6 +13,8 @@
   </head>
 
   <body class="bg-gray-50 dark:bg-gray-900">
+    <%= render 'layouts/partials/header' %>
+    <%= render 'layouts/partials/nav' %>
     <%= tag.div do %>
       <p class="block mx-auto my-2 p-4 w-1/2 text-center text-green-700 bg-green-200 border-2 border-green-700 rounded-md"><%= notice %></p>
     <% end if notice %>

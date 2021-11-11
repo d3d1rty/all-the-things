@@ -1,0 +1,6 @@
+<%= render(CardComponent.new) do |c| %>
+  <% c.body do %>
+    <h2 class="dark:text-white text-center text-4xl">Edit Item</h2>
+    <%= render 'form', item: @item %>
+  <% end %>
+<% end %>
