@@ -1,0 +1,47 @@
+<div id="<%= dom_id customer %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= customer.first_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= customer.last_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address line one:</strong>
+    <%= customer.address_line_one %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address line two:</strong>
+    <%= customer.address_line_two %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">State:</strong>
+    <%= customer.state %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">City:</strong>
+    <%= customer.city %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Zip:</strong>
+    <%= customer.zip %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number:</strong>
+    <%= customer.phone_number %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this customer", customer, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this customer', edit_customer_path(customer), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
