@@ -5,6 +5,7 @@
     <% end %>
   <% else %>
     <%= link_to('Inventory', items_path, class: 'text-xl dark:text-white dark:hover:text-gray-500 font-semibold underline') %>
+    <%= link_to('Customers', customers_path, class: 'text-xl dark:text-white dark:hover:text-gray-500 font-semibold underline') %>
     <%= render(ButtonToComponent.new(color: 'red', link: destroy_user_session_path, method: :delete, data_attrs: { turbo: false }, options: { variant: :outline })) do %>
       Sign Out
     <% end %>

@@ -1,57 +1,47 @@
-<%= form_with(model: customer, class: "contents") do |form| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
-      <ul>
-        <% customer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: customer, data: { turbo: false }) do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :first_name, errors: customer.errors)) do |c| %>
+    <%= c.label 'First Name' %>
+    <%= c.text html_options: {} %>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :last_name, errors: customer.errors)) do |c| %>
+    <%= c.label 'Last Name' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :phone_number, errors: customer.errors)) do |c| %>
+    <%= c.label 'Phone Number' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :address_line_one %>
-    <%= form.text_field :address_line_one, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :address_line_one, errors: customer.errors)) do |c| %>
+    <%= c.label 'Address (Line 1)' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :address_line_two %>
-    <%= form.text_field :address_line_two, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :address_line_two, errors: customer.errors)) do |c| %>
+    <%= c.label 'Address (Line 2)' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :state %>
-    <%= form.text_field :state, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :city, errors: customer.errors)) do |c| %>
+    <%= c.label 'City' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :city %>
-    <%= form.text_field :city, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :state, errors: customer.errors)) do |c| %>
+    <%= c.label 'State' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <%= render(FormGroupComponent.new(form: f, field: :zip, errors: customer.errors)) do |c| %>
+    <%= c.label 'Zip' %>
+    <%= c.text html_options: {} %>
+  <% end %>
 
-  <div class="my-5">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium" %>
-  </div>
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
+  <% end %>
 <% end %>
