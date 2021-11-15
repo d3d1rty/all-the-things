@@ -1,0 +1,15 @@
+<tr class="text-gray-700">
+  <%= th_for_body(customer.full_name) %>
+  <%= th_for_body(customer.phone_number) %>
+  <%= th_for_body(customer.address_line_one) %>
+  <%= th_for_body(customer.address_line_two) %>
+  <%= th_for_body(customer.city) %>
+  <%= th_for_body(customer.state) %>
+  <%= th_for_body(customer.zip) %>
+  <%= th_for_body(link_to('Edit', edit_customer_path(customer), class: 'text-yellow-500 hover:text-yellow-700 underline', data: { turbo: false })) %>
+  <th class="border px-4 py-2">
+    <%= render(ButtonToComponent.new(color: 'red', link: customer_path(customer), method: :delete, data_attrs: { confirm: 'Are you sure?', turbo: false }, options: { classes: 'px-2 py-2' })) do %>
+      Delete
+    <% end %>
+  </th>
+</tr>

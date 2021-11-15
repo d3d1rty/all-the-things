@@ -1,0 +1,47 @@
+<%= form_with(model: customer, data: { turbo: false }) do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :first_name, errors: customer.errors)) do |c| %>
+    <%= c.label 'First Name' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :last_name, errors: customer.errors)) do |c| %>
+    <%= c.label 'Last Name' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :phone_number, errors: customer.errors)) do |c| %>
+    <%= c.label 'Phone Number' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :address_line_one, errors: customer.errors)) do |c| %>
+    <%= c.label 'Address (Line 1)' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :address_line_two, errors: customer.errors)) do |c| %>
+    <%= c.label 'Address (Line 2)' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :city, errors: customer.errors)) do |c| %>
+    <%= c.label 'City' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :state, errors: customer.errors)) do |c| %>
+    <%= c.label 'State' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :zip, errors: customer.errors)) do |c| %>
+    <%= c.label 'Zip' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
+  <% end %>
+<% end %>
