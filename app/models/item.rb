@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  has_one :loan
+
   validates :name, presence: true, length: { maximum: 25 }
   validates :sku, presence: true, length: { maximum: 20 }
   validates :price, presence: true,

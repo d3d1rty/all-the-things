@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[ edit update destroy ]
+  before_action :set_customer, only: %i[ show edit update destroy ]
 
   # GET /customers or /customers.json
   def index
@@ -13,6 +13,10 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+  end
+
+  # GET /customers/1
+  def show
   end
 
   # GET /customers/1/edit

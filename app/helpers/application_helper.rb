@@ -14,6 +14,8 @@ module ApplicationHelper
   end
 
   def format_date(date)
+    return '' unless date.present?
+
     date.strftime('%m/%d/%Y')
   end
 end
