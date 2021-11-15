@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ edit update destroy ]
+  before_action :set_item, only: %i[ show edit update destroy ]
 
   # GET /items or /items.json
   def index
@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+  end
+
+  # GET /items/1
+  def show
   end
 
   # GET /items/1/edit

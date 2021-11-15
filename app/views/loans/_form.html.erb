@@ -1,0 +1,37 @@
+<%= form_with(model: loan, data: { turbo: false }) do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: loan.errors)) do |c| %>
+    <%= c.label 'Customer' %>
+    <%= c.select Customer.all.collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: loan.errors)) do |c| %>
+    <%= c.label 'Item' %>
+    <%= c.select Item.all.collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :principal, errors: loan.errors)) do |c| %>
+    <%= c.label 'Principal' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :interest_rate, errors: loan.errors)) do |c| %>
+    <%= c.label 'Interest Rate' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :maturity_date, errors: loan.errors)) do |c| %>
+    <%= c.label 'Maturity Date' %>
+    <%= c.date html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :default_date, errors: loan.errors)) do |c| %>
+    <%= c.label 'Default Date' %>
+    <%= c.date html_options: {} %>
+  <% end %>
+
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  has_many :loan
+
   validates :first_name, presence: true, length: { maximum: 25 }
   validates :last_name, presence: true, length: { maximum: 25 }
   validates :phone_number, presence: true, length: { maximum: 13 }

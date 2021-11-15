@@ -1,0 +1,31 @@
+<%= turbo_frame_tag :loans do %>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg dark:text-white font-bold text-4xl">Loans</h1>
+      <%= render(ButtonToComponent.new(color: 'blue', link: new_loan_path, method: :get, data_attrs: { turbo: false })) do %>
+        New Loan
+      <% end %>
+    </div>
+    <div class="w-full mb-8 shadow-lg font-mono">
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full">
+          <thead>
+            <tr class="text-md font-semibold tracking-wide text-center text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-600 border-gray-500">
+              <%= th_for_header('Customer') %>
+              <%= th_for_header('Item') %>
+              <%= th_for_header('Principal') %>
+              <%= th_for_header('Interest Rate') %>
+              <%= th_for_header('Maturity Date') %>
+              <%= th_for_header('Default Date') %>
+              <%= th_for_header('') %>
+              <%= th_for_header('') %>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <%= render @loans %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
