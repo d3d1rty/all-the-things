@@ -13,7 +13,8 @@ class PawnItemFlowController < ApplicationController
         format.html { redirect_to item_pawn_item_flow_path(customer_id: @customer.id), notice: "Customer was successfully created." }
         format.json { render :show, status: :created, location: @customer }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @path = save_customer_pawn_item_flow_path
+        format.html { render 'customers/new', status: :unprocessable_entity }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -22,18 +23,21 @@ class PawnItemFlowController < ApplicationController
   def new_item
     @item = Item.new
     @path = save_item_pawn_item_flow_path
+    @customer_id = params[:customer_id]
     render 'items/new'
   end
 
   def save_item
     @item = Item.new(item_params)
+    @customer_id = params[:customer_id]
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to loan_pawn_item_flow_path(customer_id: params[:customer_id], item_id: @item.id), notice: "Item was successfully created." }
+        format.html { redirect_to loan_pawn_item_flow_path(customer_id: @customer_id, item_id: @item.id), notice: "Item was successfully created." }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @path = save_item_pawn_item_flow_path
+        format.html { render 'items/new', status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -53,7 +57,8 @@ class PawnItemFlowController < ApplicationController
         format.html { redirect_to loans_path, notice: "Loan was successfully created." }
         format.json { render :show, status: :created, location: @loan }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        @path = save_loan_pawn_item_flow_path
+        format.html { render 'loans/new', status: :unprocessable_entity }
         format.json { render json: @loan.errors, status: :unprocessable_entity }
       end
     end

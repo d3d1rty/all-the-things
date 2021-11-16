@@ -1,5 +1,5 @@
 <%= form_with(model: item, url: path, method: method, data: { turbo: false }) do |f| %>
-  <%= hidden_field_tag 'customer_id', params[:customer_id] if path == save_item_pawn_item_flow_path %>
+  <%= hidden_field_tag 'customer_id', (@customer_id || params[:customer_id]) if path == save_item_pawn_item_flow_path %>
 
   <%= render(FormGroupComponent.new(form: f, field: :name, errors: item.errors)) do |c| %>
     <%= c.label 'Product Name' %>
@@ -23,8 +23,8 @@
 
   <%= render(FormGroupComponent.new(form: f, field: :stocked_at, errors: item.errors)) do |c| %>
     <%= c.label 'Stocked on' %>
-    <%= c.date html_options: {} %>
-  <% end %>
+    <%= c.date html_options: { end_year: DateTime.current.year } %>
+  <% end unless [save_item_pawn_item_flow_path, item_pawn_item_flow_path].include?(path) || (item.loan.present? && item.released_at.blank?) %>
 
   <%= tag.div class: 'text-center mt-6' do %>
     <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>

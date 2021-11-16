@@ -1,4 +1,4 @@
-<%= form_with(model: loan, data: { turbo: false }) do |f| %>
+<%= form_with(model: loan, url: path, method: method, data: { turbo: false }) do |f| %>
   <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: loan.errors)) do |c| %>
     <%= c.label 'Customer' %>
     <%= c.select Customer.all.collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: {} %>
@@ -21,13 +21,13 @@
 
   <%= render(FormGroupComponent.new(form: f, field: :maturity_date, errors: loan.errors)) do |c| %>
     <%= c.label 'Maturity Date' %>
-    <%= c.date html_options: {} %>
+    <%= c.date html_options: { start_year: DateTime.current.year, start_month: DateTime.current.month, start_day: DateTime.current.day } %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :default_date, errors: loan.errors)) do |c| %>
     <%= c.label 'Default Date' %>
     <%= c.date html_options: {} %>
-  <% end %>
+  <% end unless [save_loan_pawn_item_flow_path, loan_pawn_item_flow_path, loans_path].include?(path) %>
 
   <%= tag.div class: 'text-center mt-6' do %>
     <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>

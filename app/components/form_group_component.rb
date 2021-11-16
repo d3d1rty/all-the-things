@@ -33,14 +33,18 @@ class FormGroupComponent < ViewComponent::Base
   }
 
   renders_one :date, lambda { |html_options: {}|
-    tag.div class: 'flex w-full' do
+    tag.div class: 'flex w-full justify-items-center justify-evenly' do
       @form.date_select(
         @field,
         prompt: { day: 'Select day', month: 'Select month', year: 'Select year' },
+        end_year: (html_options[:end_year] || nil),
+        start_year: (html_options[:start_year] || 3.years.ago.year),
+        start_month: (html_options[:start_month] || DateTime.current.beginning_of_year.month),
+        start_day: (html_options[:start_day] || DateTime.current.beginning_of_year.day),
         with_css_classes: {
-          month: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes], 'w-1/3']),
-          day: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes], 'w-1/3']),
-          year: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes], 'w-1/3']),
+          month: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes]]),
+          day: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes]]),
+          year: merge_classes([INPUT_CLASS_LIST.gsub(/block w\-full/, ''), html_options[:classes]]),
         }
       )
     end
