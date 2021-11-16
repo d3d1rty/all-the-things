@@ -1,0 +1,33 @@
+<%= tag.nav class: 'text-gray-90 dark:text-white bg-gray-50 dark:bg-gray-900 lg:flex mb-6', data: { controller: 'navbar' } do %>
+  <div class="w-full lg:flex-30 m-0 p-4">
+    <%= link_to '#', class: 'text-xl no-underline p-4 lg:invisible focus:outline-none', data: { action: 'click->navbar#toggleMenuState' } do %>
+      <i class="fas fa-bars"></i>
+    <% end %>
+    <%= tag.span 'All the Things Pawn Shop', class: 'font-semibold text-xl' %>
+  </div>
+  <%= tag.div class: 'bg-gray-50 dark:bg-gray-900 z-10 absolute lg:relative w-full lg:flex-70 md:transform-2x lg:transform-none transition-transform duration-700 lg:transition-none lg:self-center text-center',
+              data: { target: 'navbar.menu' } do %>
+    <ul>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+        <%= link_to(items_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-warehouse"></i>&nbsp;Inventory
+        <% end %>
+      </li>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+        <%= link_to(customers_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-users"></i>&nbsp;Customers
+        <% end %>
+      </li>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+        <%= link_to(loans_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-landmark"></i>&nbsp;Loans
+        <% end %>
+      </li>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+        <%= link_to(destroy_user_session_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

@@ -10,11 +10,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'https://kit.fontawesome.com/b2a17afd54.js', crossorigin: 'anonymous' %>
   </head>
 
   <body class="bg-gray-50 dark:bg-gray-900">
-    <%= render 'layouts/partials/header' %>
-    <%= render 'layouts/partials/nav' %>
+    <%= render 'layouts/partials/navbar' if user_signed_in? %>
     <%= tag.div do %>
       <p class="block mx-auto my-2 p-4 w-1/2 text-center text-green-700 bg-green-200 border-2 border-green-700 rounded-md"><%= notice %></p>
     <% end if notice %>

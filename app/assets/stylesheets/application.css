@@ -37,3 +37,19 @@
 small.field_with_errors {
   color: rgba(239, 68, 68, 1);
 }
+
+@media (max-width: 768px) {
+  .md\:transform-2x {
+    transform: translateX(-200%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:transform-none {
+    transform: none;
+  }
+}
+
+.navbar-menu-open {
+  transform: translateX(0);
+}
