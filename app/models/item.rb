@@ -21,6 +21,8 @@ class Item < ApplicationRecord
                    }
 
   def days_in_stock
+    return "" unless stocked_at.present?
+
     ((sold_at&.to_date || DateTime.current) - stocked_at.to_date).to_i
   end
 end

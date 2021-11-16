@@ -2,9 +2,14 @@
   <div class="max-w-6xl mx-auto">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-lg dark:text-white font-bold text-4xl">Loans</h1>
-      <%= render(ButtonToComponent.new(color: 'blue', link: new_loan_path, method: :get, data_attrs: { turbo: false })) do %>
-        New Loan
-      <% end %>
+      <div class="w-1/3 flex justify-end gap-3 mb-4">
+        <%= render(ButtonToComponent.new(color: 'blue', link: new_loan_path, method: :get, data_attrs: { turbo: false })) do %>
+          New Loan
+        <% end %>
+        <%= render(ButtonToComponent.new(color: 'blue', link: customer_pawn_item_flow_path, method: :get, data_attrs: { turbo: false }, options: { variant: :outline })) do %>
+          Pawn Item
+        <% end %>
+      </div>
     </div>
     <div class="w-full mb-8 shadow-lg font-mono">
       <div class="overflow-x-auto rounded-lg">

@@ -3,7 +3,7 @@ class LoansController < ApplicationController
 
   # GET /loans or /loans.json
   def index
-    @loans = Loan.all
+    @loans = Loan.all.order(created_at: :desc)
   end
 
   # GET /loans/new
