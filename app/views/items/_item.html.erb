@@ -6,7 +6,7 @@
   <%= th_for_body(item.loan.present? ? link_to('Loan', loan_path(item.loan), class: 'text-blue-500 hover:text-blue-700 underline', data: { turbo: false }) : '') %>
   <%= th_for_body(status_for_release(item)) %>
   <%= th_for_body(item.days_in_stock) %>
-  <%= th_for_body(item.sold_at.present? ? format_date(item.sold_at) : 'Record Transaction') %>
+  <%= th_for_body(value_for_sold_date(item)) %>
   <%= th_for_body(link_to('Edit', edit_item_path(item), class: 'text-yellow-500 hover:text-yellow-700 underline', data: { turbo: false })) %>
   <th class="border px-4 py-2">
     <%= render(ButtonToComponent.new(color: 'red', link: item_path(item), method: :delete, data_attrs: { confirm: 'Are you sure?', turbo: false }, options: { classes: 'px-2 py-2' })) do %>
