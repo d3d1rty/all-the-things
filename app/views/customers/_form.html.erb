@@ -1,4 +1,4 @@
-<%= form_with(model: customer, data: { turbo: false }) do |f| %>
+<%= form_with(model: customer, url: path, method: method, data: { turbo: false }) do |f| %>
   <%= render(FormGroupComponent.new(form: f, field: :first_name, errors: customer.errors)) do |c| %>
     <%= c.label 'First Name' %>
     <%= c.text html_options: {} %>

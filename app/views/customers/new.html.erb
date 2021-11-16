@@ -1,6 +1,6 @@
 <%= render(CardComponent.new) do |c| %>
   <% c.body do %>
     <h2 class="dark:text-white text-center text-4xl">New Customer</h2>
-    <%= render 'form', customer: @customer %>
+    <%= render 'customers/form', customer: @customer, path: (@path || customers_path), method: :post %>
   <% end %>
 <% end %>

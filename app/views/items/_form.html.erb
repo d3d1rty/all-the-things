@@ -1,4 +1,6 @@
-<%= form_with(model: item, data: { turbo: false }) do |f| %>
+<%= form_with(model: item, url: path, method: method, data: { turbo: false }) do |f| %>
+  <%= hidden_field_tag 'customer_id', params[:customer_id] if path == save_item_pawn_item_flow_path %>
+
   <%= render(FormGroupComponent.new(form: f, field: :name, errors: item.errors)) do |c| %>
     <%= c.label 'Product Name' %>
     <%= c.text html_options: {} %>
