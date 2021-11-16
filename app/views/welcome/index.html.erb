@@ -1,3 +1,10 @@
-<%= tag.div class: 'text-center w-1/2 p-4 my-4 mx-auto bg-blue-200 text-blue-700 rounded border-blue-700 border-2' do %>
-  <p>Click on a navigation item above to get started.<p>
-<% end if user_signed_in? %>
+<%= render(HeroComponent.new) do |c| %>
+  <% c.headline 'All the Things Pawn Shop', options: { classes: 'mb-8' } %>
+  <% c.lede 'Employee Portal', options: { classes: 'mb-4' } %>
+  <%= render(ButtonToComponent.new(color: 'blue', link: new_user_session_path, method: :get, data_attrs: { turbo: false })) do %>
+    Sign In
+  <% end %>
+<% end %>
+<div class="text-center w-1/2 p-4 my-4 mx-auto bg-blue-200 text-blue-700 rounded border-blue-700 border-2">
+  <p>Sign in to get started.<p>
+</div>
