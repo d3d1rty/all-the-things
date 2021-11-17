@@ -6,7 +6,7 @@
 
   <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: loan.errors)) do |c| %>
     <%= c.label 'Item' %>
-    <%= c.select Item.all.collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <%= c.select Item.joins("LEFT OUTER JOIN loans ON loans.item_id = items.id").where("loans.id IS NULL").collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :principal, errors: loan.errors)) do |c| %>
