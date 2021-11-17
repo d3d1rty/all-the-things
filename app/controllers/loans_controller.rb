@@ -3,7 +3,7 @@ class LoansController < ApplicationController
 
   # GET /loans or /loans.json
   def index
-    @loans = Loan.all.order(created_at: :desc)
+    @loans = Loan.all.order(updated_at: :desc)
   end
 
   # GET /loans/new
@@ -25,7 +25,7 @@ class LoansController < ApplicationController
 
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to loans_path, notice: "Loan was successfully created." }
+        format.html { redirect_to loan_path(@loan), notice: "Loan was successfully created." }
         format.json { render :show, status: :created, location: @loan }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class LoansController < ApplicationController
   def update
     respond_to do |format|
       if @loan.update(loan_params)
-        format.html { redirect_to loans_path, notice: "Loan was successfully updated." }
+        format.html { redirect_to loan_path(@loan), notice: "Loan was successfully updated." }
         format.json { render :show, status: :ok, location: @loan }
       else
         format.html { render :edit, status: :unprocessable_entity }

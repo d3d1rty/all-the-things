@@ -4,6 +4,7 @@ class Loan < ApplicationRecord
 
   after_update :release_item, if: :saved_change_to_default_date?
 
+  validate :default_date_not_in_future
   validates :principal, presence: true,
                         numericality: {
                           greater_than_or_equal_to: 0,
@@ -23,8 +24,16 @@ class Loan < ApplicationRecord
                             }
   validates :maturity_date, presence: true
 
+  private
+
   def release_item
     item.released_at = Time.now
     item.save
+  end
+
+  def default_date_not_in_future
+    if default_date.present? && default_date.future?
+      errors.add(:default_date, 'cannot be in the future')
+    end
   end
 end

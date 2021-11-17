@@ -1,0 +1,13 @@
+<tr class="text-gray-700">
+  <%= th_for_body(link_to(transaction.item.name, item_path(transaction.item), class: 'text-blue-500 hover:text-blue-700 underline', data: { turbo: false })) %>
+  <%= th_for_body(format_date(transaction.date_of_sale)) %>
+  <%= th_for_body(number_to_currency(transaction.sale_price)) %>
+  <%= th_for_body(number_to_currency(transaction.calculated_tax)) %>
+  <%= th_for_body(number_to_currency(transaction.profit)) %>
+  <%= th_for_body(link_to('Edit', edit_transaction_path(transaction), class: 'text-yellow-500 hover:text-yellow-700 underline', data: { turbo: false })) %>
+  <th class="border px-4 py-2">
+    <%= render(ButtonToComponent.new(color: 'red', link: transaction_path(transaction), method: :delete, data_attrs: { confirm: 'Are you sure?', turbo: false }, options: { classes: 'px-2 py-2' })) do %>
+      Delete
+    <% end %>
+  </th>
+</tr>
