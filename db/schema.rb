@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_204633) do
+ActiveRecord::Schema.define(version: 2021_11_16_180754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2021_11_15_204633) do
     t.index ["item_id"], name: "index_loans_on_item_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.decimal "sale_price", precision: 7, scale: 2
+    t.decimal "profit", precision: 7, scale: 2
+    t.decimal "calculated_tax", precision: 7, scale: 2
+    t.datetime "date_of_sale", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_transactions_on_item_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -72,4 +83,5 @@ ActiveRecord::Schema.define(version: 2021_11_15_204633) do
 
   add_foreign_key "loans", "customers"
   add_foreign_key "loans", "items"
+  add_foreign_key "transactions", "items"
 end

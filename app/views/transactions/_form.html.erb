@@ -1,0 +1,22 @@
+<%= form_with(model: transaction, data: { turbo: false }) do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: transaction.errors)) do |c| %>
+    <%= c.label 'Item' %>
+    <%= c.select Item.all.order(updated_at: :desc).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :sale_price, errors: transaction.errors)) do |c| %>
+    <%= c.label 'Sale Price' %>
+    <%= c.text html_options: {} %>
+  <% end %>
+
+  <%= render(FormGroupComponent.new(form: f, field: :date_of_sale, errors: transaction.errors)) do |c| %>
+    <%= c.label 'Date of Sale' %>
+    <%= c.date html_options: { end_year: DateTime.current.year } %>
+  <% end %>
+
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
+  <% end %>
+<% end %>

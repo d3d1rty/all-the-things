@@ -26,7 +26,7 @@
 
   <%= render(FormGroupComponent.new(form: f, field: :default_date, errors: loan.errors)) do |c| %>
     <%= c.label 'Default Date' %>
-    <%= c.date html_options: {} %>
+    <%= c.date html_options: { end_year: DateTime.current.year } %>
   <% end unless [save_loan_pawn_item_flow_path, loan_pawn_item_flow_path, loans_path].include?(path) %>
 
   <%= tag.div class: 'text-center mt-6' do %>

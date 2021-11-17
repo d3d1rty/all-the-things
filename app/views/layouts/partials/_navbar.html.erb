@@ -24,6 +24,11 @@
         <% end %>
       </li>
       <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+        <%= link_to(transactions_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-money-bill"></i>&nbsp;Transactions
+        <% end %>
+      </li>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
         <%= link_to(destroy_user_session_path, class: 'text-xl hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
         <% end %>
