@@ -1,12 +1,26 @@
 <%= form_with(model: loan, url: path, method: method, data: { turbo: false }) do |f| %>
-  <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: loan.errors)) do |c| %>
-    <%= c.label 'Customer' %>
-    <%= c.select Customer.all.collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: {} %>
+  <% if loan.customer&.id %>
+    <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: loan.errors)) do |c| %>
+      <%= c.label 'Customer' %>
+      <%= c.select Customer.where(id: loan.customer.id).collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: {} %>
+    <% end %>
+  <% else %>
+    <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: loan.errors)) do |c| %>
+      <%= c.label 'Customer' %>
+      <%= c.select Customer.all.collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: {} %>
+    <% end %>
   <% end %>
 
-  <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: loan.errors)) do |c| %>
-    <%= c.label 'Item' %>
-    <%= c.select Item.joins("LEFT OUTER JOIN loans ON loans.item_id = items.id").where("loans.id IS NULL").collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+  <% if loan.item&.id %>
+    <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: loan.errors)) do |c| %>
+      <%= c.label 'Item' %>
+      <%= c.select Item.where(id: loan.item.id).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <% end %>
+  <% else %>
+    <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: loan.errors)) do |c| %>
+      <%= c.label 'Item' %>
+      <%= c.select Item.joins("LEFT OUTER JOIN loans ON loans.item_id = items.id").where("loans.id IS NULL").collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <% end %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :principal, errors: loan.errors)) do |c| %>
