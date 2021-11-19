@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_180754) do
+ActiveRecord::Schema.define(version: 2021_11_19_042022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_180754) do
     t.string "sku"
     t.decimal "price", precision: 7, scale: 2
     t.decimal "cost", precision: 7, scale: 2
-    t.boolean "pawned"
     t.datetime "released_at", precision: 6
     t.datetime "stocked_at", precision: 6
     t.datetime "sold_at", precision: 6

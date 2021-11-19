@@ -42,6 +42,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'view_component'
+gem 'phonelib'
 
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]

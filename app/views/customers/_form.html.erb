@@ -31,7 +31,7 @@
 
   <%= render(FormGroupComponent.new(form: f, field: :state, errors: customer.errors)) do |c| %>
     <%= c.label 'State' %>
-    <%= c.text html_options: {} %>
+    <%= c.select options_for_select(US_STATES, 'TN'), html_options: {} %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :zip, errors: customer.errors)) do |c| %>
