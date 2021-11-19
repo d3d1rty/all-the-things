@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :loans
   scope :pawn_item_flow do
+    get 'customer-select', to: 'pawn_item_flow#select_customer', as: :select_customer_pawn_item_flow
     get 'customer', to: 'pawn_item_flow#new_customer', as: :customer_pawn_item_flow
     post 'customer', to: 'pawn_item_flow#save_customer', as: :save_customer_pawn_item_flow
     get 'item', to: 'pawn_item_flow#new_item', as: :item_pawn_item_flow
