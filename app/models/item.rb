@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validate :stocked_at_not_in_future
   validate :stocked_at_after_default_date
   validates :name, presence: true, length: { maximum: 25 }
-  validates :sku, presence: true, length: { maximum: 20 }
+  validates :sku, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :price, presence: true,
                     numericality: {
                       greater_than_or_equal_to: 0,
