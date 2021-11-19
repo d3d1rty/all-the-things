@@ -1,0 +1,104 @@
+<%= turbo_frame_tag :reports do %>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between flex-wrap flex-row items-center mb-4 mx-2">
+      <h1 class="block text-lg dark:text-white font-bold text-4xl mb-4">Reports</h1>
+    </div>
+    <h2 class="block text-lg dark:text-white font-bold text-3xl mb-4 mx-2">Detail Reports</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Unsold Items</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that lists all of the items that are currently in inventory.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Pawned Items</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that lists all of the pawned items that have not yet been released to inventory.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Profit per Transaction</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that lists the details of every transaction along with the associated profit per transaction.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Profit per Day of Shelf Life</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that lists items, the number of days the item spent on the shelf before being sold, and the total profit from the sale divided by that number of days.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <h2 class="block text-lg dark:text-white font-bold text-3xl mb-4 mx-2 mt-4">Summary Reports</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Time from Default to Release</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that shows the total time from when a customer defaults on an item to when that item is released into inventory.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Monthly Revenue per Item</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that displays the business’s monthly revenue by item name.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <h2 class="block text-lg dark:text-white font-bold text-3xl mb-4 mx-2 mt-4">Exception Reports</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Item Restock Alert</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that displays items which have a low quantity on-hand. Low is defined as having less than three items of a kind in-stock.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
+        <% c.body do %>
+          <h3 class="dark:text-white text-center text-2xl font-semibold">Release to Sale</h3>
+          <div class="text-center">
+            <p class="dark:text-white m-4">A report that shows a list of pawned items that need to be released into inventory because the associated loan has defaulted.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+              View
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
