@@ -7,7 +7,7 @@
           <%= render(ButtonToComponent.new(color: 'blue', link: new_customer_path, method: :get, data_attrs: { turbo: false })) do %>
             New Customer
           <% end %>
-          <%= render(ButtonToComponent.new(color: 'blue', link: customer_pawn_item_flow_path, method: :get, data_attrs: { turbo: false }, options: { variant: :outline })) do %>
+          <%= render(ButtonToComponent.new(color: 'blue', link: select_customer_pawn_item_flow_path, method: :get, data_attrs: { turbo: false }, options: { variant: :outline })) do %>
             Pawn Item
           <% end %>
         </div>
