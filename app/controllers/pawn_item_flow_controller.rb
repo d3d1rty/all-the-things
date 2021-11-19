@@ -1,4 +1,7 @@
 class PawnItemFlowController < ApplicationController
+  def select_customer
+  end
+
   def new_customer
     @customer = Customer.new
     @path = save_customer_pawn_item_flow_path
@@ -54,7 +57,7 @@ class PawnItemFlowController < ApplicationController
 
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to loans_path, notice: "Loan was successfully created." }
+        format.html { redirect_to loan_path(@loan), notice: 'Item successfully pawned for customer and loan created.' }
         format.json { render :show, status: :created, location: @loan }
       else
         @path = save_loan_pawn_item_flow_path

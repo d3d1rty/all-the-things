@@ -1,0 +1,20 @@
+<%= render(CardComponent.new) do |c| %>
+  <% c.body do %>
+    <h2 class="dark:text-white text-center text-4xl">Select Customer</h2>
+    <%= form_with url: item_pawn_item_flow_path, method: :get do |f| %>
+      <%= render(FormGroupComponent.new(form: f, field: :customer_id, errors: [])) do |c| %>
+        <%= c.select Customer.all.collect {|c| ["#{c.full_name} (ID: #{c.id})", c.id] }, html_options: { classes: 'mt-8' } %>
+      <% end %>
+      <%= tag.div class: 'text-center mt-6' do %>
+        <%= render(ButtonTagComponent.new(color: 'blue', type: :submit, options: { data: { turbo: false } })) do %>
+            Next
+        <% end %>
+      <% end %>
+    <% end %>
+    <hr class="m-8" />
+    <div class="text-center border-gray-900 dark:border-white">
+      <h2 class="mb-4 dark:text-white text-center text-4xl">Customer not found?</h2>
+      <%= link_to('Create New Customer', customer_pawn_item_flow_path, class: 'text-xl text-blue-500 hover:text-blue-700 underline', data: { turbo: false }) %>
+    </div>
+  <% end %>
+<% end %>
