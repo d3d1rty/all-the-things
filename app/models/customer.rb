@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  has_many :loans
+  has_many :loans, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 25 }
   validates :last_name, presence: true, length: { maximum: 25 }

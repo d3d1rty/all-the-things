@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  has_one :loan
-  has_one :trans, class_name: 'Transaction'
+  has_one :loan, dependent: :destroy
+  has_one :trans, class_name: 'Transaction', dependent: :destroy
 
   validate :stocked_at_not_in_future
   validate :stocked_at_after_default_date
