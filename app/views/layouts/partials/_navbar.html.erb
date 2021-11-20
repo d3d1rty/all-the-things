@@ -8,27 +8,32 @@
   <%= tag.div class: 'flex-grow bg-gray-50 dark:bg-gray-900 z-10 absolute lg:relative w-full lg:flex-65 md:transform-2x lg:transform-none transition-transform duration-700 lg:transition-none lg:self-center text-center',
               data: { target: 'navbar.menu' } do %>
     <ul>
-      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-1 xl:px-4">
         <%= link_to(items_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-warehouse"></i>&nbsp;Inventory
         <% end %>
       </li>
-      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-1 xl:px-4">
         <%= link_to(customers_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-users"></i>&nbsp;Customers
         <% end %>
       </li>
-      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-1 xl:px-4">
         <%= link_to(loans_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-landmark"></i>&nbsp;Loans
         <% end %>
       </li>
-      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-1 xl:px-4">
         <%= link_to(transactions_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-money-bill"></i>&nbsp;Transactions
         <% end %>
       </li>
-      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-4">
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-2 xl:px-4">
+        <%= link_to(reports_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
+          <i class="fas fa-scroll"></i>&nbsp;Reports
+        <% end %>
+      </li>
+      <li class="block lg:inline py-2 lg:py-0 px-0 lg:px-1 xl:px-4">
         <%= link_to(destroy_user_session_path, class: 'text-md hover:text-gray-500', data: { 'turbo-frame': '_top' }) do %>
           <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
         <% end %>

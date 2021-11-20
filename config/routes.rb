@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     get 'loan', to: 'pawn_item_flow#new_loan', as: :loan_pawn_item_flow
     post 'loan', to: 'pawn_item_flow#save_loan', as: :save_loan_pawn_item_flow
   end
+  scope :reports do
+    get '/', to: 'reports#index', as: :reports
+    get 'unsold-items', to: 'reports#unsold_items', as: :unsold_items_report
+  end
   root to: 'welcome#index'
 end
