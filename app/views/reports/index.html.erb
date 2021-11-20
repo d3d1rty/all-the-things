@@ -10,7 +10,7 @@
           <h3 class="dark:text-white text-center text-2xl font-semibold">Unsold Items</h3>
           <div class="text-center">
             <p class="dark:text-white m-4">A report that lists all of the items that are currently in inventory.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <%= render(ButtonToComponent.new(color: 'blue', link: unsold_items_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>

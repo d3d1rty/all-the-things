@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   scope :reports do
     get '/', to: 'reports#index', as: :reports
+    get 'unsold-items', to: 'reports#unsold_items', as: :unsold_items_report
   end
   root to: 'welcome#index'
 end
