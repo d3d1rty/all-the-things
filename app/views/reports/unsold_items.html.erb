@@ -12,6 +12,7 @@
               <%= th_for_header('SKU') %>
               <%= th_for_header('Price') %>
               <%= th_for_header('Cost') %>
+              <%= th_for_header('Stocked Date') %>
               <%= th_for_header('Days in Stock') %>
             </tr>
           </thead>
@@ -22,6 +23,7 @@
                 <%= th_for_body(item.sku) %>
                 <%= th_for_body(number_to_currency(item.price)) %>
                 <%= th_for_body(number_to_currency(item.cost)) %>
+                <%= th_for_body(format_date(item.stocked_at)) %>
                 <%= th_for_body(item.days_in_stock) %>
               </tr>
             <% end %>
