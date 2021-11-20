@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope :reports do
     get '/', to: 'reports#index', as: :reports
     get 'unsold-items', to: 'reports#unsold_items', as: :unsold_items_report
+    get 'pawned-items', to: 'reports#pawned_items', as: :pawned_items_report
   end
   root to: 'welcome#index'
 end
