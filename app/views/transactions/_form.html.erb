@@ -1,7 +1,14 @@
 <%= form_with(model: transaction, data: { turbo: false }) do |f| %>
-  <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: transaction.errors)) do |c| %>
-    <%= c.label 'Item' %>
-    <%= c.select Item.where(sold_at: nil).order(updated_at: :desc).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+  <% if transaction.item&.id %>
+    <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: transaction.errors)) do |c| %>
+      <%= c.label 'Item' %>
+      <%= c.select Item.where(id: transaction.item.id).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <% end %>
+  <% else %>
+    <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: transaction.errors)) do |c| %>
+      <%= c.label 'Item' %>
+      <%= c.select Item.where('sold_at is NULL AND stocked_at IS NOT NULL').order(updated_at: :desc).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <% end %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :sale_price, errors: transaction.errors)) do |c| %>
