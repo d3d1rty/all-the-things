@@ -10,13 +10,15 @@
             <tr class="text-md font-semibold tracking-wide text-center text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-600 border-gray-500">
               <%= th_for_header('Product') %>
               <%= th_for_header('Monthly Revenue') %>
+              <%= th_for_header('Monthly Profit') %>
             </tr>
           </thead>
           <tbody class="bg-white">
             <% @transactions.each do |transaction| %>
               <tr class="text-gray-700">
-                <%= th_for_body(transaction.first) %>
-                <%= th_for_body(number_to_currency(transaction.last)) %>
+                <%= th_for_body(transaction[0]) %>
+                <%= th_for_body(number_to_currency(transaction[1])) %>
+                <%= th_for_body(number_to_currency(transaction[2])) %>
               </tr>
             <% end %>
           </tbody>

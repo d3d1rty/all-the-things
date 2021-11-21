@@ -26,6 +26,6 @@ class ReportsController < ApplicationController
     @transactions = Transaction.joins(:item)
                                .group('items.name')
                                .where('date_of_sale >= ? and date_of_sale < ?', Date.today.at_beginning_of_month, Date.today.at_end_of_month)
-                               .pluck("items.name as product_name, sum(transactions.sale_price) as revenue")
+                               .pluck("items.name as product_name, sum(transactions.sale_price) as revenue, sum(transactions.profit) as profit")
   end
 end
