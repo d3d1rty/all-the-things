@@ -21,4 +21,11 @@ class ReportsController < ApplicationController
   def time_from_default_to_release
     @items = Item.joins(:loan).where.not(loan: { default_date: nil }, released_at: nil)
   end
+
+  def monthly_revenue_per_item
+    @transactions = Transaction.joins(:item)
+                               .group('items.name')
+                               .where('date_of_sale >= ? and date_of_sale < ?', Date.today.at_beginning_of_month, Date.today.at_end_of_month)
+                               .pluck("items.name as product_name, sum(transactions.sale_price) as revenue")
+  end
 end

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get 'profit-per-tx', to: 'reports#profit_per_tx', as: :profit_per_tx_report
     get 'profit-per-day-of-shelf-life', to: 'reports#profit_per_day_of_shelf_life', as: :profit_per_day_of_shelf_life_report
     get 'time-from-default-to-release', to: 'reports#time_from_default_to_release', as: :time_from_default_to_release_report
+    get 'monthly-revenue-per-item', to: 'reports#monthly_revenue_per_item', as: :monthly_revenue_per_item_report
   end
   root to: 'welcome#index'
 end

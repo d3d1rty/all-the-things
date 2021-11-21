@@ -1,0 +1,27 @@
+<%= turbo_frame_tag :reports do %>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between flex-wrap flex-row items-center mb-4 mx-2">
+      <h2 class="text-lg dark:text-white font-bold text-4xl mb-4">Monthly Revenue per Item (<%= Date.today.strftime("%B") %>)</h1>
+    </div>
+    <div class="w-full mb-8 shadow-lg font-mono">
+      <div class="overflow-x-auto rounded-lg">
+        <table class="w-full">
+          <thead>
+            <tr class="text-md font-semibold tracking-wide text-center text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-600 border-gray-500">
+              <%= th_for_header('Product') %>
+              <%= th_for_header('Monthly Revenue') %>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            <% @transactions.each do |transaction| %>
+              <tr class="text-gray-700">
+                <%= th_for_body(transaction.first) %>
+                <%= th_for_body(number_to_currency(transaction.last)) %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

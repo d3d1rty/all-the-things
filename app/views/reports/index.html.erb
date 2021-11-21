@@ -49,9 +49,6 @@
           </div>
         <% end %>
       <% end %>
-    </div>
-    <h2 class="block text-lg dark:text-white font-bold text-3xl mb-4 mx-2 mt-4">Summary Reports</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
         <% c.body do %>
           <h3 class="dark:text-white text-center text-2xl font-semibold">Time from Default to Release</h3>
@@ -63,12 +60,15 @@
           </div>
         <% end %>
       <% end %>
+    </div>
+    <h2 class="block text-lg dark:text-white font-bold text-3xl mb-4 mx-2 mt-4">Summary Reports</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <%= render(CardComponent.new(options: { classes: 'w-full' })) do |c| %>
         <% c.body do %>
           <h3 class="dark:text-white text-center text-2xl font-semibold">Monthly Revenue per Item</h3>
           <div class="text-center">
             <p class="dark:text-white m-4">A report that displays the business’s monthly revenue by item name.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <%= render(ButtonToComponent.new(color: 'blue', link: monthly_revenue_per_item_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>
