@@ -17,4 +17,8 @@ class ReportsController < ApplicationController
   def profit_per_day_of_shelf_life
     @transactions = Transaction.all.order(date_of_sale: :desc)
   end
+
+  def time_from_default_to_release
+    @items = Item.joins(:loan).where.not(loan: { default_date: nil }, released_at: nil)
+  end
 end

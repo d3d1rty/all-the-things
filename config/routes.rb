@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'pawned-items', to: 'reports#pawned_items', as: :pawned_items_report
     get 'profit-per-tx', to: 'reports#profit_per_tx', as: :profit_per_tx_report
     get 'profit-per-day-of-shelf-life', to: 'reports#profit_per_day_of_shelf_life', as: :profit_per_day_of_shelf_life_report
+    get 'time-from-default-to-release', to: 'reports#time_from_default_to_release', as: :time_from_default_to_release_report
   end
   root to: 'welcome#index'
 end

@@ -57,7 +57,7 @@
           <h3 class="dark:text-white text-center text-2xl font-semibold">Time from Default to Release</h3>
           <div class="text-center">
             <p class="dark:text-white m-4">A report that shows the total time from when a customer defaults on an item to when that item is released into inventory.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <%= render(ButtonToComponent.new(color: 'blue', link: time_from_default_to_release_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>
