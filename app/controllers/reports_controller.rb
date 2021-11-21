@@ -32,4 +32,8 @@ class ReportsController < ApplicationController
   def item_restock_alert
     @items = Item.where('stocked_at IS NOT NULL AND sold_at IS NULL').select('name, count(name) as on_hand').group(:name).having('count(name) < 3')
   end
+
+  def release_to_sale
+    @items = Item.where('stocked_at IS NULL AND released_at IS NOT NULL')
+  end
 end

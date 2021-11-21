@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'time-from-default-to-release', to: 'reports#time_from_default_to_release', as: :time_from_default_to_release_report
     get 'monthly-revenue-per-item', to: 'reports#monthly_revenue_per_item', as: :monthly_revenue_per_item_report
     get 'item-restock-alert', to: 'reports#item_restock_alert', as: :item_restock_alert_report
+    get 'release-to-sale', to: 'reports#release_to_sale', as: :release_to_sale_report
   end
   root to: 'welcome#index'
 end

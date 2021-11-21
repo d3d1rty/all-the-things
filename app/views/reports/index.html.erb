@@ -92,8 +92,8 @@
         <% c.body do %>
           <h3 class="dark:text-white text-center text-2xl font-semibold">Release to Sale</h3>
           <div class="text-center">
-            <p class="dark:text-white m-4">A report that shows a list of pawned items that need to be released into inventory because the associated loan has defaulted.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <p class="dark:text-white m-4">A report that shows a list of pawned items that need to be stocked into inventory because the associated loan has defaulted.</p>
+            <%= render(ButtonToComponent.new(color: 'blue', link: release_to_sale_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>

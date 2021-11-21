@@ -29,6 +29,12 @@ class Item < ApplicationRecord
     (((sold_at&.to_date || DateTime.current) - stocked_at.to_date).to_i) + 1
   end
 
+  def days_pending_stock
+    return "" unless released_at.present?
+
+    (((stocked_at&.to_date || DateTime.current) - released_at.to_date).to_i) + 1
+  end
+
   def days_pending_release
     return "" unless loan&.default_date.present?
 
