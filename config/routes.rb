@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/', to: 'reports#index', as: :reports
     get 'unsold-items', to: 'reports#unsold_items', as: :unsold_items_report
     get 'pawned-items', to: 'reports#pawned_items', as: :pawned_items_report
+    get 'profit-per-tx', to: 'reports#profit_per_tx', as: :profit_per_tx_report
   end
   root to: 'welcome#index'
 end

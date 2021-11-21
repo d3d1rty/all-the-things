@@ -9,4 +9,8 @@ class ReportsController < ApplicationController
   def pawned_items
     @items = Item.joins(:loan).where('stocked_at IS NULL AND released_at IS NOT NULL')
   end
+
+  def profit_per_tx
+    @transactions = Transaction.all
+  end
 end
