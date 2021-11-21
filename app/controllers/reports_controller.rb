@@ -11,6 +11,10 @@ class ReportsController < ApplicationController
   end
 
   def profit_per_tx
-    @transactions = Transaction.all
+    @transactions = Transaction.all.order(date_of_sale: :desc)
+  end
+
+  def profit_per_day_of_shelf_life
+    @transactions = Transaction.all.order(date_of_sale: :desc)
   end
 end

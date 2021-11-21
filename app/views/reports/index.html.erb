@@ -43,7 +43,7 @@
           <h3 class="dark:text-white text-center text-2xl font-semibold">Profit per Day of Shelf Life</h3>
           <div class="text-center">
             <p class="dark:text-white m-4">A report that lists items, the number of days the item spent on the shelf before being sold, and the total profit from the sale divided by that number of days.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <%= render(ButtonToComponent.new(color: 'blue', link: profit_per_day_of_shelf_life_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>
