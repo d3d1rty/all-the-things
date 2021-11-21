@@ -28,4 +28,8 @@ class ReportsController < ApplicationController
                                .where('date_of_sale >= ? and date_of_sale < ?', Date.today.at_beginning_of_month, Date.today.at_end_of_month)
                                .pluck("items.name as product_name, sum(transactions.sale_price) as revenue, sum(transactions.profit) as profit")
   end
+
+  def item_restock_alert
+    @items = Item.where('stocked_at IS NOT NULL AND sold_at IS NULL').select('name, count(name) as on_hand').group(:name).having('count(name) < 3')
+  end
 end

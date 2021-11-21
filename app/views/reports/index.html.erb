@@ -82,7 +82,7 @@
           <h3 class="dark:text-white text-center text-2xl font-semibold">Item Restock Alert</h3>
           <div class="text-center">
             <p class="dark:text-white m-4">A report that displays items which have a low quantity on-hand. Low is defined as having less than three items of a kind in-stock.</p>
-            <%= render(ButtonToComponent.new(color: 'blue', link: reports_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
+            <%= render(ButtonToComponent.new(color: 'blue', link: item_restock_alert_report_path, method: :get, data_attrs: { turbo: false }, options: { classes: 'px-2 py-2', variant: :outline })) do %>
               View
             <% end %>
           </div>
