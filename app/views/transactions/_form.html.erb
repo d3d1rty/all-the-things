@@ -1,7 +1,7 @@
 <%= form_with(model: transaction, data: { turbo: false }) do |f| %>
   <%= render(FormGroupComponent.new(form: f, field: :item_id, errors: transaction.errors)) do |c| %>
     <%= c.label 'Item' %>
-    <%= c.select Item.all.order(updated_at: :desc).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
+    <%= c.select Item.where(sold_at: nil).order(updated_at: :desc).collect {|i| ["#{i.name} - #{i.sku} (ID: #{i.id})", i.id] }, html_options: {} %>
   <% end %>
 
   <%= render(FormGroupComponent.new(form: f, field: :sale_price, errors: transaction.errors)) do |c| %>

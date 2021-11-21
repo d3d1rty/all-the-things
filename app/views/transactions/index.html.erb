@@ -4,7 +4,7 @@
       <h2 class="block text-lg dark:text-white font-bold text-4xl mb-4">Transactions</h1>
       <div class="block">
         <div class="flex justify-end gap-3 mb-4">
-          <%= render(ButtonToComponent.new(color: 'blue', link: new_item_path, method: :get, data_attrs: { turbo: false })) do %>
+          <%= render(ButtonToComponent.new(color: 'blue', link: new_transaction_path, method: :get, data_attrs: { turbo: false })) do %>
             New Transaction
           <% end %>
         </div>
